@@ -5,11 +5,14 @@
         <file-picker/>
       </b-field>
       <hr>
-      <b-field horizontal label="Name" message="Required. Your name">
-        <b-input v-model="form.name" name="name" required/>
+      <b-field horizontal label="First Name" message="Required. Your name">
+        <b-input v-model="firstName" name="name" required/>
+      </b-field>
+      <b-field horizontal label="Last Name" message="Required. Your name">
+        <b-input v-model="lastName" name="name" required/>
       </b-field>
       <b-field horizontal label="E-mail" message="Required. Your e-mail">
-        <b-input v-model="form.email" name="email" type="email" required/>
+        <b-input v-model="userEmail" name="email" type="email" required/>
       </b-field>
       <hr>
       <b-field horizontal>
@@ -46,13 +49,13 @@ export default {
   },
   computed: {
     ...mapState([
-      'userName',
+      'firstName',
+      'lastName',
       'userEmail'
     ])
   },
   mounted () {
-    this.form.name = this.userName
-    this.form.email = this.userEmail
+   
   },
   methods: {
     submit () {
@@ -68,11 +71,14 @@ export default {
     }
   },
   watch: {
-    userName (newValue) {
-      this.form.name = newValue
+    firstName (newValue) {
+      this.firstName = newValue
+    },
+    lastName (newValue) {
+      this.lastName = newValue
     },
     userEmail (newValue) {
-      this.form.email = newValue
+      this.userEmail = newValue
     }
   }
 }

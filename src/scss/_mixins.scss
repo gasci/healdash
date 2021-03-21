@@ -1,13 +1,46 @@
 @mixin transition($t) {
-  transition: $t 250ms ease-in-out 50ms;
+    transition: $t 250ms ease-in-out 50ms;
 }
 
 @mixin icon-with-update-mark ($icon-base-width) {
-  .icon {
-    width: $icon-base-width;
-
-    &.has-update-mark:after {
-      right: ($icon-base-width / 2) - .85;
+    .icon {
+        width: $icon-base-width;
+        &.has-update-mark:after {
+            right: ($icon-base-width / 2) - .85;
+        }
     }
-  }
+}
+
+// helpers
+$sizes: ( 0, 2, 3, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
+$positions: ("top", "left", "bottom", "right");
+@each $size in $sizes {
+    .m-#{$size} {
+        margin: $size + px !important;
+    }
+    .p-#{$size} {
+        padding: $size + px !important;
+    }
+    @each $position in $positions {
+        .m-#{$position}-#{$size} {
+            margin-#{$position}: $size + px !important;
+        }
+        .p-#{$position}-#{$size} {
+            padding-#{$position}: $size + px !important;
+        }
+    }
+}
+
+@each $size in $sizes {
+    .is-bordered-#{$size} {
+        border-radius: $size + px !important;
+    }
+}
+
+.has-white-border {
+    border: 1px solid white;
+}
+
+.has-shadow {
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.02);
 }

@@ -115,7 +115,7 @@ export default {
         })
         .catch(e => {
           this.isLoading = false
-          this.$buefy.toast.open({
+          this.$buefy.snackbar.open({
             message: `Error: ${e.message}`,
             type: 'is-danger'
           })

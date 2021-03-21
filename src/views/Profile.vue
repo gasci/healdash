@@ -2,7 +2,7 @@
   <section class="section">
     <title-bar>
       Profile
-      <router-link to="/" class="button is-primary" slot="button">
+      <router-link to="/home" class="button is-primary" slot="button">
         Dashboard
       </router-link>
     </title-bar>
@@ -11,11 +11,11 @@
       <profile-update-form class="tile is-child"/>
       <card-component title="Profile" icon="account" class="tile is-child">
         <div class="image is-user-avatar has-max-width is-aligned-center">
-          <img :src="userAvatar" :alt="userName"/>
+          <img :src="userAvatar" :alt="firstName"/>
         </div>
         <hr>
         <b-field label="Name">
-          <b-input :value="userName" custom-class="is-static" readonly/>
+          <b-input :value="firstName + ' ' + lastName" custom-class="is-static" readonly/>
         </b-field>
         <hr>
         <b-field label="E-mail">
@@ -42,7 +42,8 @@ export default {
   computed: {
     ...mapState([
       'userAvatar',
-      'userName',
+      'firstName',
+      'lastName',
       'userEmail'
     ])
   }

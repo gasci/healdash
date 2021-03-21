@@ -2,7 +2,7 @@
   <section class="section">
     <title-bar>
       Forms
-      <router-link to="/" class="button is-primary" slot="button">
+      <router-link to="/home" class="button is-primary" slot="button">
         Dashboard
       </router-link>
     </title-bar>
