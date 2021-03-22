@@ -3,7 +3,6 @@ import jwt_decode from "jwt-decode";
 export default {
     components: {
 
-
     },
     data() {
         return {
@@ -26,8 +25,13 @@ export default {
         updateUserInfo(userInfo) {
             this.$store.commit("user", userInfo);
         },
-        applyTokenHeader() {
-            this.userToken = localStorage.getItem("userToken");
+        applyTokenHeader(value = null) {
+
+            if (value) {
+                this.userToken = value;
+            } else {
+                this.userToken = localStorage.getItem("userToken");
+            }
 
             if (this.userToken) {
                 this.axios.defaults.headers.common = {
@@ -69,7 +73,7 @@ export default {
             this.axios
                 .post(this.requestUrl + `token_check/`)
                 .then(() => {
-                    var userInfo = jwt_decode(this.userToken);
+                    var userInfo = jwt_decode(this.userToken); // decode JWT tokens including user info
                     this.confAuth(true, userInfo);
                 })
                 .catch((error) => {

@@ -115,12 +115,10 @@ export default {
       this.axios
         .post(this.requestUrl + `login/`, this.formData)
         .then((response) => {
+              
+          this.applyTokenHeader(response.data.access); // apply token header
           
-          localStorage.setItem("userToken", response.data.access); // set user token
-    
-          this.applyTokenHeader(); // apply token header
-          
-          this.checkToken(); 
+          this.checkToken(); // check token and receive user info
         })
         .catch((error) => {
           if (!error.response) {
