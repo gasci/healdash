@@ -31,15 +31,15 @@
       v-if="authenticated"
     >
       <div class="navbar-end">
-        <nav-bar-menu class="has-user-avatar">
-          <div class="is-user-avatar">
+        
+          <!-- <div class="is-user-avatar">
             <img :src="userAvatar" :alt="firstName" />
           </div>
           <div class="is-user-name">
             <span>{{ firstName }} {{ lastName }}</span>
-          </div>
+          </div> -->
 
-          <div slot="dropdown" class="navbar-dropdown">
+          <!-- <div slot="dropdown" class="navbar-dropdown">
             <router-link
               to="/profile"
               class="navbar-item"
@@ -56,21 +56,57 @@
               <b-icon icon="email" custom-size="default"></b-icon>
               <span>Messages</span>
             </a>
-            <!-- <hr class="navbar-divider"> -->
-            <!-- <a class="navbar-item">
-              <b-icon icon="logout" custom-size="default"></b-icon>
-              <span>Log Out</span>
-            </a> -->
-          </div>
-        </nav-bar-menu>
+          </div> -->
+          <b-dropdown aria-role="list" position="is-bottom-left" class="m-left-10">
+            
+            <template #trigger="{ active }" expanded>
+                <b-button
+                    :label="`${ firstName } ${ lastName }`"
+                    type="is-white"
+                    icon-left="account"
+                    style="height:100%"
+                    :icon-right="active ? 'close' : 'menu-down'" />
+            </template>
+
+            <b-dropdown-item aria-role="listitem" @click="$router.push({ path: 'profile' })">
+              <div class="media">
+                <b-icon class="media-left" icon="account"></b-icon>
+                <div class="media-content">
+                  <h3>My Profile</h3>
+                  <small>Edit account information/password</small>
+                </div>
+              </div>
+            </b-dropdown-item>
+
+            <b-dropdown-item aria-role="listitem">
+              <div class="media">
+                <b-icon class="media-left" icon="settings"></b-icon>
+                <div class="media-content">
+                  <h3>Settings</h3>
+                  <small>General settings</small>
+                </div>
+              </div>
+            </b-dropdown-item>
+
+             <b-dropdown-item aria-role="listitem" @click="logout">
+              <div class="media">
+                <b-icon class="media-left" icon="logout"></b-icon>
+                <div class="media-content">
+                  <h3>Log Out</h3>
+                  <small>End your session</small>
+                </div>
+              </div>
+            </b-dropdown-item>
+          </b-dropdown>
+        
         <!-- <a href="https://justboil.me/bulma-admin-template/two" class="navbar-item" title="About">
           <b-icon icon="help-circle-outline" custom-size="default"/>
           <span>About</span>
         </a> -->
-        <a class="navbar-item" title="Log out" @click="logout">
+        <!-- <a class="navbar-item" title="Log out" @click="logout">
           <b-icon icon="logout" custom-size="default" />
           <span>Log out</span>
-        </a>
+        </a> -->
       </div>
     </div>
   </nav>
@@ -104,7 +140,8 @@ export default {
       return this.isAsideMobileExpanded ? "backburger" : "forwardburger";
     },
     ...mapState([
-      "firstName", "lastName",
+      "firstName",
+      "lastName",
       "userAvatar",
       "authenticated",
       "isNavBarVisible",
@@ -122,7 +159,7 @@ export default {
     },
     menuNavBarToggle() {
       this.isMenuNavBarActive = !this.isMenuNavBarActive;
-    }
+    },
   },
 };
 </script>

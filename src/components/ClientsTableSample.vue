@@ -7,6 +7,7 @@
         :loading="isLoading"
         :paginated="paginated"
         :per-page="perPage"
+        :mobile-cards="false"
         :striped="true"
         :hoverable="true"
         default-sort="name"

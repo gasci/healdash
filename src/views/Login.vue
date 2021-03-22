@@ -29,15 +29,17 @@
             </div>
             <form action class="box">
               <div class="field">
-                <b-field :label="'username_or_email'">
+                <b-field :label="'Username or E-mail'">
                   <b-input
+                    @keyup.native.enter="login"
                     v-model="username"
                     type="text"
-                    :placeholder="'username_or_email_c'"
+                    :placeholder="'username or email'"
                   ></b-input>
                 </b-field>
-                <b-field :label="'password'">
+                <b-field :label="'Password'">
                   <b-input
+                    @keyup.native.enter="login"
                     type="password"
                     v-model="password"
                     placeholder="********"
@@ -45,7 +47,6 @@
                   ></b-input>
                 </b-field>
               </div>
-
               <div class="has-text-centered is-fullwidth m-top-20 p-bottom-5">
                 <b-button
                   expanded
@@ -55,31 +56,11 @@
                   class="has-shadow is-primary is-medium"
                   >Login</b-button
                 >
-                <div class="field has-text-centered m-top-10">
+                <div class="field has-text-centered m-top-20">
                   <b-button type="is-text has-text-black" tag="a"
-                    >forgot_password</b-button
+                    >Forgot password</b-button
                   >
-                  <!-- <br />
-                  <a
-                    class="has-text-underlined has-text-black"
-                    type="is-text"
-                    @click="resendConfirmationEmailPrompt"
-                    >{{ t.resend_confirmation_email }}</a
-                  > -->
                 </div>
-                <!-- <hr class="m-top-10" />
-                  <b-button
-                    class="has-shadow is-warning is-medium"
-                    expanded
-                    icon-left="envelope"
-                    @click="
-                      sendEvent('sign_up_with_email_clicked', {
-                        username: 'anon',
-                      });
-                      $router.push({ name: 'register' });
-                    "
-                    >sign_up_with_email</b-button
-                  > -->
               </div>
             </form>
           </div>
@@ -115,20 +96,23 @@ export default {
       this.axios
         .post(this.requestUrl + `login/`, this.formData)
         .then((response) => {
-              
-          this.applyTokenHeader(response.data.access); // apply token header
-          
+          localStorage.setItem("userToken", response.data.access); // store the token
+
+          this.applyTokenHeader(); // apply token header
+
           this.checkToken(); // check token and receive user info
         })
         .catch((error) => {
           if (!error.response) {
-            this.$buefy.snackbar.open({ // network error
+            this.$buefy.snackbar.open({
+              // network error
               message: `No connection`,
             });
           } else {
             this.$buefy.snackbar.open({
-              message: `Error: ${error.response.data}`,
+              message: `Incorrect credentials`,
             });
+            // console.log(error.response)
           }
         });
     },

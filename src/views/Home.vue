@@ -1,7 +1,9 @@
 <template>
   <section class="section">
     <title-bar> Welcome, {{ firstName }} {{ lastName }}! </title-bar>
-    <b-button class="m-bottom-20 box-shadow is-danger" @click="getUsers">Example API Call (Brings all usernames)</b-button>
+    <b-button class="m-bottom-20 box-shadow is-danger" @click="getUsers"
+      >Example API Call (Brings all usernames)</b-button
+    >
     <tiles>
       <card-widget
         class="tile is-child"
@@ -156,7 +158,10 @@ export default {
       this.axios
         .post(this.requestUrl + `user/`)
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
+          this.$buefy.toast.open({
+            message: response.data,
+          });
         })
         .catch((error) => {
           if (!error.response) {
