@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import Customers from '../views/Customers.vue'
+import Employees from '../views/Employees.vue'
 
 Vue.use(VueRouter)
 
@@ -37,6 +39,28 @@ const routes = [{
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: Login
+    },
+    {
+        meta: {
+            title: 'Customers'
+        },
+        path: '/customers',
+        name: 'customers',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: Customers
+    },
+    {
+        meta: {
+            title: 'Employees'
+        },
+        path: '/employees',
+        name: 'employees',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: Employees
     },
     {
         meta: {

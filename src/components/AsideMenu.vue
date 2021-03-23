@@ -1,8 +1,8 @@
 <template>
   <aside v-show="isAsideVisible" class="aside is-placed-left is-expanded">
     <div class="image">
-      <a >
-        <img class="has-shadow" src="../assets/logo.png"/>
+      <a>
+        <img class="has-shadow" src="../assets/logo.png" />
       </a>
     </div>
     <div class="menu is-menu-main">
@@ -20,7 +20,7 @@ export default {
   components: { AsideMenuList },
   data() {
     return {
-      menu: eval('this.menuUnauthorized'),
+      menu: eval("this.menuUnauthorized"),
     };
   },
   computed: {
@@ -33,33 +33,31 @@ export default {
           label: "Dashboard",
         },
         {
-          to: "/tables",
-          label: "Tables",
-          icon: "table",
+          to: "/customers",
+          label: "Patients",
+          icon: "account-multiple",
           updateMark: true,
         },
         {
-          to: "/forms",
-          label: "Forms",
-          icon: "square-edit-outline",
+          to: "/employees",
+          label: "Employees",
+          icon: "briefcase",
         },
         {
-          to: "/profile",
-          label: "Profile",
-          icon: "account-circle",
-        },
-        {
-          label: "Submenus",
-          subLabel: "Submenus Example",
+          label: "Dev Tools",
+          onlyStaff: true,
+          // subLabel: "Submenus Example",
           icon: "view-list",
           menu: [
             {
-              href: "#void",
-              label: "Sub-item One",
+              to: "/forms",
+              label: "Forms",
+              icon: "square-edit-outline",
             },
             {
-              href: "#void",
-              label: "Sub-item Two",
+              to: "/tables",
+              label: "Tables",
+              icon: "table",
             },
           ],
         },

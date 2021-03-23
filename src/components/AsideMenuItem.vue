@@ -1,5 +1,5 @@
 <template>
-  <li :class="{'is-active':isDropdownActive}">
+  <li :class="{'is-active':isDropdownActive}" v-if="(item.onlyStaff === true && isStaff) || (!item.onlyStaff)">
     <component :is="componentIs" :to="itemTo" :href="itemHref" @click="menuClick" exact-active-class="is-active" :class="{'has-icon':!!item.icon}">
       <b-icon v-if="item.icon" :icon="item.icon" :class="{ 'has-update-mark' : item.updateMark }" custom-size="default"  />
       <span v-if="item.label" :class="{'menu-item-label':!!item.icon}">{{ item.label }}</span>
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: 'AsideMenuItem',
   components: {
@@ -49,7 +51,11 @@ export default {
     },
     itemHref () {
       return this.item.href ? this.item.href : null
-    }
+    },
+    ...mapState(["isStaff"]),
+  },
+  mounted(){
+    
   }
 }
 </script>

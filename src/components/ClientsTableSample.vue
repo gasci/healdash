@@ -12,7 +12,6 @@
         :hoverable="true"
         default-sort="name"
         :data='clients'>
-
       <b-table-column cell-class="has-no-head-mobile is-image-cell" v-slot="props">
         <div class="image">
           <img :src="props.row.avatar" class="is-rounded">
@@ -88,7 +87,7 @@ export default {
       clients: [],
       isLoading: false,
       paginated: false,
-      perPage: 10
+      perPage: 20
     }
   },
   computed: {
@@ -96,7 +95,6 @@ export default {
       if (this.trashObject) {
         return this.trashObject.name
       }
-
       return null
     }
   },

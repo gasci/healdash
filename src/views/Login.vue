@@ -76,7 +76,7 @@ import { mapState } from "vuex";
 import TitleBar from "@/components/TitleBar";
 
 export default {
-  name: "Login",
+  name: "login",
   components: { TitleBar },
   data() {
     return {
@@ -94,7 +94,7 @@ export default {
       this.formData.set("username", this.username);
       this.formData.set("password", this.password);
       this.axios
-        .post(this.requestUrl + `login/`, this.formData)
+        .post(this.requestUrl + `auth/login/`, this.formData)
         .then((response) => {
           localStorage.setItem("userToken", response.data.access); // store the token
 
@@ -112,7 +112,7 @@ export default {
             this.$buefy.snackbar.open({
               message: `Incorrect credentials`,
             });
-            // console.log(error.response)
+            console.log(error.response)
           }
         });
     },

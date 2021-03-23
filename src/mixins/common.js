@@ -51,6 +51,7 @@ export default {
                 if (userInfo) {
                     this.updateUserInfo({
                         email: userInfo.email,
+                        isStaff: userInfo.is_staff,
                         firstName: userInfo.first_name,
                         lastName: userInfo.last_name,
                         avatar: "https://avatars.dicebear.com/v2/gridy/John-Doe.svg",
@@ -71,10 +72,11 @@ export default {
         },
         checkToken() {
             this.axios
-                .post(this.requestUrl + `token_check/`)
+                .post(this.requestUrl + `auth/token_check/`)
                 .then(() => {
                     var userInfo = jwt_decode(this.userToken); // decode JWT tokens including user info
                     this.confAuth(true, userInfo);
+                    console.log(userInfo)
                 })
                 .catch((error) => {
                     if (!error.response) {

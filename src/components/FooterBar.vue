@@ -5,7 +5,7 @@
         <div class="level-left">
           <div class="level-item">
             <div>
-              <b>{{ year }}, Dr. Göktuğ Aşcı</b>&nbsp;&nbsp;<span class="tag">v1.4.1</span>
+              <b>{{ year }}, Dr. Göktuğ Aşcı</b>&nbsp;&nbsp;<span class="tag">{{require('../../package.json').version}}</span>
             </div>
           </div>
         </div>

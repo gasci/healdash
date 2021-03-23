@@ -3,7 +3,7 @@
     <div class="level">
       <div v-if="icon" class="level-item has-widget-icon">
         <div class="is-widget-icon">
-          <b-icon :icon="icon" size="is-large" :type="type"/>
+          <b-icon :icon="icon" size="is-medium" :type="type"/>
         </div>
       </div>
       <div class="level-item">
@@ -11,9 +11,9 @@
           <h3 class="subtitle is-spaced">
             {{ label }}
           </h3>
-          <h1 class="title">
+          <h2 class="title">
             <growing-number :value="number" :prefix="prefix" :suffix="suffix"/>
-          </h1>
+          </h2>
         </div>
       </div>
     </div>

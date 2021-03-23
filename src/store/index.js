@@ -10,6 +10,7 @@ export default new Vuex.Store({
         userAvatar: null,
         firstName: null,
         lastName: null,
+        isStaff: null,
 
         /* NavBar */
         isNavBarVisible: true,
@@ -43,6 +44,9 @@ export default new Vuex.Store({
             }
             if (payload.avatar) {
                 state.userAvatar = payload.avatar
+            }
+            if (payload.isStaff) {
+                state.isStaff = payload.isStaff
             }
         },
 

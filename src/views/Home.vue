@@ -3,26 +3,37 @@
     <title-bar> Welcome, {{ firstName }} {{ lastName }}! </title-bar>
     <b-button class="m-bottom-20 box-shadow is-danger" @click="getUsers"
       >Example API Call (Brings all usernames)</b-button
-    >
+    > 
+
     <tiles>
       <card-widget
         class="tile is-child"
         type="is-primary"
         icon="account-multiple"
+        :number="192787"
+        label="Patients"
+      />
+
+      <card-widget
+        class="tile is-child"
+        type="is-primary"
+        icon="briefcase"
         :number="512"
-        label="Clients"
+        label="Employees"
+      />
+    </tiles>
+    <tiles>
+      <card-widget
+        class="tile is-child"
+        type="is-primary"
+        icon="cash-multiple"
+        :number="1223432"
+        prefix="₺"
+        label="Profit"
       />
       <card-widget
         class="tile is-child"
-        type="is-info"
-        icon="cart-outline"
-        :number="7770"
-        prefix="$"
-        label="Sales"
-      />
-      <card-widget
-        class="tile is-child"
-        type="is-success"
+        type="is-primary"
         icon="chart-timeline-variant"
         :number="256"
         suffix="%"
@@ -46,13 +57,6 @@
         >
         </line-chart>
       </div>
-    </card-component>
-
-    <card-component title="Clients" class="has-table">
-      <clients-table-sample
-        :data-url="`${$router.options.base}data-sources/clients.json`"
-        :checkable="true"
-      />
     </card-component>
   </section>
 </template>
@@ -156,7 +160,7 @@ export default {
     },
     getUsers() {
       this.axios
-        .post(this.requestUrl + `user/`)
+        .post(this.requestUrl + `account/user/`)
         .then((response) => {
           // console.log(response.data);
           this.$buefy.toast.open({
