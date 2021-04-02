@@ -46,10 +46,11 @@
       <section class="section" slot="empty">
         <div class="content has-text-grey has-text-centered">
           <template v-if="isLoading">
-            <p>
+            <!-- <p>
               <b-icon icon="dots-horizontal" size="is-large"/>
             </p>
-            <p>Fetching data...</p>
+            <p>Fetching data...</p> -->
+            <div class="m-50"></div>
           </template>
           <template v-else>
             <p>

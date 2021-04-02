@@ -21,7 +21,9 @@ import CardComponent from "@/components/CardComponent";
 export default {
   name: "employees",
   data() {
-    return {};
+    return {
+      isLoading: true
+    };
   },
   components: {
     ClientsTableSample,
@@ -34,7 +36,7 @@ export default {
   methods: {
     getEmployees() {
       this.axios
-        .post(this.requestUrl + `employee/list/`)
+        .post(this.requestUrl + `employee/list/?page=1`)
         .then((response) => {
           console.log(response)
         })
