@@ -9,7 +9,7 @@
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
         "package-mac": "vue-cli-service build && electron-packager . --overwrite --platform=darwin --arch=x64 --icon=res/mac/icon.icns --prune=true --out=release-builds",
-        "package-win": "vue-cli-service build && electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=res/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Healdash\""
+        "package-win": "vue-cli-service build && electron-packager . healdash --overwrite --asar=true --platform=win32 --arch=ia32 --icon=res/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Healdash\""
     },
     "dependencies": {
         "axios": "^0.21.1",

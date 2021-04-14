@@ -9,7 +9,8 @@ export default {
             user: JSON.parse(localStorage.getItem('user')),
             userToken: localStorage.getItem('userToken'),
             formData: new FormData(),
-            requestUrl: 'http://127.0.0.1:8000/',
+            //https://healdash.herokuapp.com/
+            requestUrl: 'https://healdash.herokuapp.com/',
         }
     },
     methods: {
